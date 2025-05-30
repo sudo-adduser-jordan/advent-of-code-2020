@@ -1,6 +1,4 @@
 defmodule AOC.CodeGen do
-  @content
-
   defp create_dir(dir) do
     case File.mkdir_p(dir) do
       :ok -> IO.puts("Created directory: #{dir}")
@@ -38,8 +36,7 @@ defmodule AOC.CodeGen do
     create_dir("solutions")
 
     # create files
-    dirs = ["data", "solutions"]
-    Enum.each(dirs, fn dir ->
+    Enum.each(["data", "solutions"], fn dir ->
       create_day_files(dir)
     end)
   end
