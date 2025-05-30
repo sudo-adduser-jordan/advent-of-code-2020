@@ -16,7 +16,7 @@ defmodule AOC.CodeGen do
   defp create_solution_files() do
     for day <- 1..25 do
       filename = Path.join(["solutions", "day_#{day}.ex"])
-      module_name = String.capitalize("solutions") <> ".Day" <> Integer.to_string(day)
+      module_name = "Solutions.Day" <> Integer.to_string(day)
       content = """
         defmodule #{module_name} do
           def run do
