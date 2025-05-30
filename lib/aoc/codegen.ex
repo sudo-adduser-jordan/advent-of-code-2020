@@ -13,10 +13,10 @@ defmodule AOC.CodeGen do
       end
   end
 
-  defp create_day_files(parent_dir) do
+  defp create_solution_files() do
     for day <- 1..25 do
-      filename = Path.join([parent_dir, "day_#{day}.ex"])
-      module_name = String.capitalize(parent_dir) <> ".Day" <> Integer.to_string(day)
+      filename = Path.join(["solutions", "day_#{day}.ex"])
+      module_name = String.capitalize("solutions") <> ".Day" <> Integer.to_string(day)
       content = """
         defmodule #{module_name} do
           def run do
@@ -24,20 +24,23 @@ defmodule AOC.CodeGen do
           end
         end
       """
-
       create_file(filename, content)
     end
   end
 
+  defp create_data_files() do
+    for day <- 1..25 do
+      filename = Path.join(["data", "input_#{day}.txt"])
+      filename1 = Path.join(["data", "sample_#{day}.txt"])
+      create_file(filename, "")
+      create_file(filename1, "")
+    end
+  end
+
   def run do
-    # create dirs
-    # create_dir("libs")
     create_dir("data")
     create_dir("solutions")
-
-    # create files
-    Enum.each(["data", "solutions"], fn dir ->
-      create_day_files(dir)
-    end)
+    create_data_files()
+    create_solution_files()
   end
 end
