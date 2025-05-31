@@ -1,10 +1,14 @@
 # ADVENT OF CODE 2021
+
 defmodule AOC do
+
     def run do
-      IO.inspect("Advent of Code 2021")
-        Solutions.Day1.partA()
+      IO.puts("Advent of Code 2021\n")
+        # Solutions.Day1.partA()
+        Solutions.Day1.partB()
     end
-end
+
+  end
 AOC.run()
 
 :true # test placeholder

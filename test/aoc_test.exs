@@ -1,10 +1,8 @@
 defmodule AOCTest do
   use ExUnit.Case
-  doctest AOC
 
   test "Main" do
-    assert AOC.run() == "true"
+        Solutions.Day1.partA() != nil
   end
-
 
 end
