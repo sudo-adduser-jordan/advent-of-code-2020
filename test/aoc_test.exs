@@ -2,7 +2,9 @@ defmodule AOCTest do
   use ExUnit.Case
   doctest AOC
 
-  test "greets the world" do
-    assert AOC.hello() == :world
+  test "Main" do
+    assert AOC.run() == "true"
   end
+
+
 end

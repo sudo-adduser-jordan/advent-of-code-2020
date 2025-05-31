@@ -21,3 +21,6 @@ aoc-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# user generated
+.elixir_ls/
