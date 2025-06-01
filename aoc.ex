@@ -8,8 +8,8 @@ defmodule AOC do
         # Solutions.Day1.partA()
         # Solutions.Day1.partB()
 
-        Solutions.Day2.partA()
-        # Solutions.Day2.partB()
+        # Solutions.Day2.partA()
+        Solutions.Day2.partB()
 
     end
 
