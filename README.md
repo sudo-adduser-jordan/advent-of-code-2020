@@ -1,6 +1,9 @@
 # AOC
 
-**TODO: Add description**
+To generate template files use the following command
+```bash
+mix codegen
+```
 
 ## Installation
 
