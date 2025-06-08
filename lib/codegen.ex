@@ -34,6 +34,36 @@ defmodule AOC.CodeGen do
     end
   end
 
+  defp create_test_files() do
+    for day <- 1..25 do
+      filename = Path.join(["test", "day_#{day}.ex"])
+      module_name = "AOCTest.Day" <> Integer.to_string(day)
+      content = """
+        defmodule #{module_name} do
+          use ExUnit.Case
+
+          test "A: sample" do
+            assert Solutions.Day#{day}.partA() == 69
+          end
+
+          test "A: input" do
+            assert Solutions.Day#{day}.partA() == 69
+          end
+
+          test "B: sample" do
+            assert Solutions.Day#{day}.partB() == 69
+          end
+
+          test "B: input" do
+            assert Solutions.Day#{day}.partB() == 69
+          end
+
+        end
+      """
+      create_file(filename, content)
+    end
+  end
+
   defp create_data_files() do
     for day <- 1..25 do
       filename = Path.join(["data", "#{day}_input.txt"])
@@ -48,5 +78,6 @@ defmodule AOC.CodeGen do
     create_dir("lib/solutions")
     create_data_files()
     create_solution_files()
+    create_test_files()
   end
 end

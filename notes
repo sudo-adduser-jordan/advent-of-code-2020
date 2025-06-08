@@ -1,1 +1,18 @@
-871 high
+
+
+
+
+mix codegen
+
+mix run aoc
+mix run aoc.ex
+
+mix run test 1
+mix run test 1a
+mix run test 1b
+
+
+
+
+
+
