@@ -3,12 +3,16 @@
     def partA do
       IO.puts("| Day 3 | Part A | Solution \n")
 
-      result = "data/2_input.txt"
-        |> File.stream!()
-        |> Stream.map(&String.trim/1)
-        |> Stream.map(&String.split(&1, " "))
+      result = "data/3_input.txt"
+        |> File.read!()
+        |> String.split("\n", trim: true)
+        |> Enum.with_index()
+        |> Enum.count( fn {line, idx} ->
+              col = rem(idx * 3, 31)
+              String.at(line, col) == "#"
+            end)
 
-        IO.puts("Result: #{result}")
+      IO.puts("Result: #{result}")
     end
 
     def partB do
