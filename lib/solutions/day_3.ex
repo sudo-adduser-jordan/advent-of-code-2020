@@ -1,26 +1,35 @@
 defmodule Solutions.Day3 do
-  def partA(contents, right) do
-    contents
-    |> Enum.map(&repeat(&1, Enum.count(contents)))
-    |> Enum.with_index()
-    |> Enum.count(&is_tree(&1, right))
+
+  def partA() do
+    lines = File.read!("data/3_input.txt")
+      |> String.split("\n", trim: true)
+
+    lines
+      |> Enum.map(&String.duplicate(&1, Enum.count(lines)))
+      |> Enum.with_index()
+      |> Enum.count(&is_tree(&1, 3))
+      |> IO.inspect()
   end
 
-  def partB(contents, right, down) do
-    contents
-    |> Enum.map(&repeat(&1, Enum.count(contents)))
-    |> Enum.take_every(down)
-    |> Enum.with_index()
-    |> Enum.count(&is_tree(&1, right))
-  end
+  def partB() do
+    lines = File.read!("data/3_input.txt")
+      |> String.split("\n", trim: true)
 
-  defp repeat(content, count) do
-    Enum.reduce(0..count, "", fn _, acc ->
-      content <> acc
+    line_count = Enum.count(lines)
+
+    [[1, 1], [3, 1], [5, 1], [7, 1], [1, 2]] |> Enum.map(
+      fn [right, down] -> lines
+        |> Enum.map(&String.duplicate(&1, line_count))
+        |> Enum.take_every(down)
+        |> Enum.with_index()
+        |> Enum.count(&is_tree(&1, right))
     end)
+    |> Enum.reduce(&(&1 * &2))
+    |> IO.inspect()
   end
 
-  defp is_tree({content, index}, right) do
-    String.at(content, right * index) == "#"
+  defp is_tree({input, index}, right) do
+    String.at(input, right * index) == "#"
   end
+
 end
